@@ -1,3 +1,4 @@
+//add content to the page
 const keyboard = document.createElement('div');
 keyboard.classList.add('keyboard');
 
@@ -18,12 +19,16 @@ keys.forEach(key => {
   button.textContent = key;
   console.log(key);
   button.setAttribute('data-code', key);
+  button.addEventListener('click', () => {
+    input.value += button.textContent;
+  });
   keyboard.appendChild(button);
 });
 
 document.body.appendChild(input);
 document.body.appendChild(keyboard);
 
+//highlight button on press
 const keyState = {};
 
 document.addEventListener('keydown', event => {
@@ -49,4 +54,8 @@ document.addEventListener('keyup', event => {
   keyState[keyCode] = false;
 });
 
+document.addEventListener('keydown', event => {
+    const keyPressed = event.key;
+    input.value += keyPressed;
+  });
 

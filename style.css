@@ -14,6 +14,7 @@ body {
     height: 50px;
     min-width: 50px;
     border-radius: 4px;
+    transition: all 0.5s ease;
 }
 
 .active {
@@ -23,6 +24,6 @@ body {
 .text-input {
     width: 350px;
     height: 50px;
-    margin-top: 200px;
+    margin-top: 150px;
     text-align: center;
 }
