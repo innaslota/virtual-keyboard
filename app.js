@@ -6,7 +6,7 @@ const input = document.createElement('input');
 input.classList.add('text-input');
 
 const keys = [
-  {value: '~', code: 'Backquote'}, 
+  {value: '`', code: 'Backquote'}, 
   {value: 1, code: 'Digit1'}, 
   {value: 2, code: 'Digit2'}, 
   {value: 3, code: 'Digit3'},
@@ -58,22 +58,23 @@ const keys = [
   {value: ',', code: 'Comma'},
   {value: '.', code: 'Period'},
   {value: '/', code: 'Slash'},
-  {value: 'Shift', code: 'ShiftRight'},
   {value: '↑', code: 'ArrowUp'}, 
+  {value: 'Shift', code: 'ShiftRight'},
   {value: 'Ctrl', code: 'ControlLeft'}, 
   {value: 'Win', code: 'MetaLeft'}, 
   {value: 'Alt', code: 'AltLeft'}, 
   {value: 'Space', code: 'Space'}, 
   {value: 'Alt', code: 'AltRight'}, 
-  {value: 'Ctrl', code: 'ControlRight'}, 
   {value: '←', code: 'ArrowLeft'}, 
   {value: '↓', code: 'ArrowDown'}, 
-  {value: '→', code: 'ArrowRight'}
+  {value: '→', code: 'ArrowRight'},
+  {value: 'Ctrl', code: 'ControlRight'}
 ];
 
 keys.forEach(key => {
   const button = document.createElement('button');
-  button.classList.add('key');
+  button.classList.add(`key`);
+  button.classList.add(`${key.code}`);
   button.textContent = key.value;
   button.setAttribute('data-code', `${key.code}`);
 
@@ -115,6 +116,22 @@ document.addEventListener('keyup', event => {
 //add to input
 document.addEventListener('keydown', event => {
     const keyPressed = event.key;
-    input.value += keyPressed;
+    if (keyPressed === 'Shift' || 
+        keyPressed === 'Enter' || 
+        keyPressed === 'Alt' || 
+        keyPressed === 'Control' || 
+        keyPressed === 'Space' || 
+        keyPressed === 'Backspace' || 
+        keyPressed === 'Tab' ||
+        keyPressed === 'CapsLock') {
+          input.value += ''
+    } else {
+      input.value += keyPressed;
+    };
+
+    if (event.code === 'Backspace') {
+      const inputValue = input.value;
+      input.value = inputValue.substring(0, inputValue.length - 1);
+    }
   });
 
