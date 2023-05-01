@@ -27,3 +27,17 @@ body {
     margin-top: 150px;
     text-align: center;
 }
+
+.Backspace,
+.Tab,
+.CapsLock,
+.Enter,
+.ShiftLeft,
+.ShiftRight {
+    width: 100px
+}
+
+.Space {
+    width: 350px;
+}
+
