@@ -140,6 +140,8 @@ document.addEventListener('keydown', event => {
       input.value = inputValue.substring(0, inputValue.length - 1);
     } else if (event.code === 'Delete') {
       input.value = value.substring(0, position) + value.substring(position + 1);
-    } 
+    } else if (event.code === 'Space') {
+      input.value += ' '; 
+    }
   });
 
