@@ -6,7 +6,7 @@ const input = document.createElement('textarea');
 input.classList.add('text-input');
 
 const keys = [
-  {value: '`', code: 'Backquote'}, 
+  {value: '`', code: 'Backquote'},  
   {value: 1, code: 'Digit1'}, 
   {value: 2, code: 'Digit2'}, 
   {value: 3, code: 'Digit3'},
@@ -133,14 +133,15 @@ document.addEventListener('keydown', event => {
           input.value += ''
     } else {
       input.value += keyPressed;
-    };
+    }
 
     if (event.code === 'Backspace') {
       const inputValue = input.value;
       input.value = inputValue.substring(0, inputValue.length - 1);
     } else if (event.code === 'Delete') {
+      // eslint-disable-next-line no-undef
       input.value = value.substring(0, position) + value.substring(position + 1);
-    } else if (event.code === 'Space') {
+    }else if (event.code === 'Space') {
       input.value += ' '; 
     }  else if (event.code === 'Tab') {
       input.value += '    '; 
@@ -152,6 +153,17 @@ document.addEventListener('keydown', event => {
       input.value += '↓'; 
     } else if (event.code === 'ArrowRight') {
       input.value += '→'; 
-    } 
+    } else if (event.getModifierState('CapsLock')) {
+      let keysToUp = document.querySelectorAll('.key[data-code^="Key"]');
+      keysToUp.forEach(key => {
+        key.textContent = key.textContent.toUpperCase();
+      });
+    } else if (!event.getModifierState('CapsLock')) {
+      let keysToUp = document.querySelectorAll('.key[data-code^="Key"]');
+      keysToUp.forEach(key => {
+        key.textContent = key.textContent.toLowerCase();
+      });
+    }
   });
+
 
