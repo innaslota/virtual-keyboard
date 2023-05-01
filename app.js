@@ -2,7 +2,7 @@
 const keyboard = document.createElement('div');
 keyboard.classList.add('keyboard');
 
-const input = document.createElement('input');
+const input = document.createElement('textarea');
 input.classList.add('text-input');
 
 const keys = [
@@ -19,7 +19,8 @@ const keys = [
   {value: 0, code: 'Digit0'},
   {value: '-', code: 'Minus'},
   {value: '=', code: 'Equal'}, 
-  {value: 'Backspace', code: 'Backspace'},
+  {value: '⌫', code: 'Backspace'},
+  {value: 'Del', code: 'Delete'},
   {value: 'Tab', code: 'Tab'},
   {value: 'q', code: 'KeyQ'},
   {value: 'w', code: 'KeyW'},
@@ -123,7 +124,12 @@ document.addEventListener('keydown', event => {
         keyPressed === 'Space' || 
         keyPressed === 'Backspace' || 
         keyPressed === 'Tab' ||
-        keyPressed === 'CapsLock') {
+        keyPressed === 'CapsLock' ||
+        keyPressed === 'ArrowUp' ||
+        keyPressed === 'ArrowLeft' ||
+        keyPressed === 'ArrowDown' ||
+        keyPressed === 'ArrowRight' ||
+        keyPressed === 'Delete') {
           input.value += ''
     } else {
       input.value += keyPressed;
@@ -132,6 +138,8 @@ document.addEventListener('keydown', event => {
     if (event.code === 'Backspace') {
       const inputValue = input.value;
       input.value = inputValue.substring(0, inputValue.length - 1);
-    }
+    } else if (event.code === 'Delete') {
+      input.value = value.substring(0, position) + value.substring(position + 1);
+    } 
   });
 
