@@ -144,6 +144,14 @@ document.addEventListener('keydown', event => {
       input.value += ' '; 
     }  else if (event.code === 'Tab') {
       input.value += '    '; 
-    }
+    } else if (event.code === 'ArrowUp') {
+      input.value += '↑'; 
+    } else if (event.code === 'ArrowLeft') {
+      input.value += '←'; 
+    } else if (event.code === 'ArrowDown') {
+      input.value += '↓'; 
+    } else if (event.code === 'ArrowRight') {
+      input.value += '→'; 
+    } 
   });
 
